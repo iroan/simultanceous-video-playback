@@ -20,11 +20,14 @@
 3. 播放视频
 
 # TODO
-1. [ ] 注册
+> 1. client指Android APP
+> 1. server指后端服务器
+1. [ ] 登录
+   1. client传递注册信息到server: account, password
+   2. 如果没有该用户信息将自动注册，密码要加盐保存到MySQL user表
+   3. 对比密码的[sha3](https://keccak.team/software.html)值判断登录是否成功，使用[lib](https://github.com/aelstad/keccakj)
 2. [ ] 修改密码
-3. [ ] 登录
-   1. [x] Android硬编码账户登录
-   2. [ ] 服务器查询MySQL账户信息，验证登录
+3. [x] 忘记密码，不需要支持该功能，重新注册另外一个账户即可
 
 
 # 参考文档
