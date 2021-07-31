@@ -22,12 +22,19 @@
 # TODO
 > 1. client指Android APP
 > 1. server指后端服务器
-1. [ ] 登录
+1. [x] 登录
    1. client传递注册信息到server: account, password
    2. 如果没有该用户信息将自动注册，密码要加盐保存到MySQL user表
    3. 对比密码的[sha3](https://keccak.team/software.html)值判断登录是否成功，使用[lib](https://github.com/aelstad/keccakj)
 2. [ ] 修改密码
 3. [x] 忘记密码，不需要支持该功能，重新注册另外一个账户即可
+4. [ ] 视频播放进度同步
+   1. 假设账户A是主账户，B是从账户
+   2. 则视频的播放进度是有A控制的
+   3. A每秒上传进度time1到server
+   4. B每秒从server获取time1，B的进度为time2
+   5. 如果time1和time2误差<=3秒内，则B不调整进度
+   6. 如果time1和time2误差>3秒内，则把B的进度设置为A的进度time1
 
 
 # 参考文档
