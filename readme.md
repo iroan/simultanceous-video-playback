@@ -16,6 +16,33 @@
    1. 账户和密码
    2. 登录时间
 
+## 数据结构及其功能: 
+1. user前缀: [主账户名称] 用于保存用户的在线信息
+   1. 统计在线用户
+   2. 对请求进行鉴权
+   ```
+      user:name token
+      hmset user:wangkaixuan token 122EE42F-FA57-4779-96D9-EA3821DFE4DE
+      hmset user:chengangrrong token 7CF2532C-539F-4574-B767-75C868A51F42
+   ```   
+1. session:[主账户名称] 用户保存会话信息
+   1. 显示会话信息
+   2. 视频进度同步
+   ```   
+      session:master name
+         videoName: xxx
+         videoSHA3: xxx
+         progress: xxx
+         slaves: xxx
+
+      hmset session:wangkaixuan  videoName 百万美元宝贝.rmvb videoSHA3 e855149c7e691bba168579461784cac2df328709fee2bcebd328994a06557b8 progress 3600 slaves xxx
+   ```   
+1. slave:[主账户名称] 用户保存会话中的从设备列表
+   1. 保存一个主设备会话的从设备列表
+   ```   
+      lpush slaves:wangkaixuan chengangrong
+   ```   
+
 ## 接口
 
 | 接口   | 功能 | 备注                             |
