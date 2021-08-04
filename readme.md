@@ -82,6 +82,8 @@
    4. B 每秒从 server 获取 time1，B 的进度为 time2
    5. 如果 time1 和 time2 误差<=3 秒内，则 B 不调整进度
    6. 如果 time1 和 time2 误差>3 秒内，则把 B 的进度设置为 A 的进度 time1
+5. [ ] Android端与server端通信使用https
+   1. 先使用http，后续完善
 
 # 简记词
 
