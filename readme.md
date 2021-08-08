@@ -30,12 +30,11 @@
    2. 视频进度同步
    ```   
       session:master name
-         videoName: xxx
-         videoSHA3: xxx
+         videoSHA1: xxx
          progress: xxx
          slaves: xxx
 
-      hmset session:wangkaixuan  videoName 百万美元宝贝.rmvb videoSHA3 e855149c7e691bba168579461784cac2df328709fee2bcebd328994a06557b8 progress 3600 slaves xxx
+      hmset session:wangkaixuan  videoSHA1 e855149c7e691bba168579461784cac2df328709fee2bcebd328994a06557b8 progress 3600 slaves xxx
    ```   
 1. slave:[主账户名称] 用户保存会话中的从设备列表
    1. 保存一个主设备会话的从设备列表

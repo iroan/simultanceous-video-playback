@@ -17,4 +17,8 @@ function curlPostNewSession() {
     curl -X POST http://192.168.50.174:18605/status -d @newSession.json
 }
 
+function curlPostUpdateProgress() {
+    curl -X POST http://192.168.50.174:18605/status -d @updateProgress.json
+}
+
 $1
