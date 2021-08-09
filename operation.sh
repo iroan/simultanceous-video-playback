@@ -25,4 +25,9 @@ function curlPostUpdateProgress() {
     curl -X POST ${SERVER_URL}/status -d @updateProgress.json
 }
 
+function apiGetMasterAccount() {
+    queryString="action=masterAccount&account=wangkaixuan&token=122EE42F-FA57-4779-96D9-EA3821DFE4DE&progress=1"
+    curl -v -X GET ${SERVER_URL}/status?"${queryString}"
+}
+
 $1
