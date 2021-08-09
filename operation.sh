@@ -1,6 +1,10 @@
 set -x
 set -e
+
 timestamp=$(date +%s)
+
+# SERVER_URL=http://192.168.50.174:18605/
+SERVER_URL=http://localhost:18605
 
 function rds() {
     filename=mysql-query-"${timestamp}".log
@@ -14,11 +18,11 @@ function redis() {
 }
 
 function curlPostNewSession() {
-    curl -X POST http://192.168.50.174:18605/status -d @newSession.json
+    curl -X POST ${SERVER_URL}/status -d @newSession.json
 }
 
 function curlPostUpdateProgress() {
-    curl -X POST http://192.168.50.174:18605/status -d @updateProgress.json
+    curl -X POST ${SERVER_URL}/status -d @updateProgress.json
 }
 
 $1
