@@ -38,8 +38,11 @@ function curlLogin() {
     curl -X POST ${SERVER_URL}/login -d @api-params/login.json
 }
 
-function apiGetMasterAccount() {
-    queryString="action=masterAccount&account=wangkaixuan&token=6613b5ce-6b86-4058-98af-43987cdddbeb&progress=1"
+function apiGet() {
+    queryString="action=masterAccount&account=wangkaixuan&token=045ba410-ae0c-41d4-b8d9-b7c9a3f20337"
+    curl -X GET ${SERVER_URL}/status?"${queryString}"
+
+    queryString="action=sessionProgress&account=wangkaixuan&token=045ba410-ae0c-41d4-b8d9-b7c9a3f20337&master=wangkaixuan"
     curl -X GET ${SERVER_URL}/status?"${queryString}"
 }
 
