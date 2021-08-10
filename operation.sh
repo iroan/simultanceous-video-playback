@@ -38,6 +38,10 @@ function curlLogin() {
     curl -X POST ${SERVER_URL}/login -d @api-params/login.json
 }
 
+function joinSession() {
+    curl -X POST ${SERVER_URL}/status -d @api-params/joinSession.json
+}
+
 function apiGet() {
     queryString="action=masterAccount&account=wangkaixuan&token=045ba410-ae0c-41d4-b8d9-b7c9a3f20337"
     curl -X GET ${SERVER_URL}/status?"${queryString}"
