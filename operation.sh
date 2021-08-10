@@ -27,11 +27,11 @@ function redis() {
 }
 
 function curlPostNewSession() {
-    curl -X POST ${SERVER_URL}/status -d @newSession.json
+    curl -X POST ${SERVER_URL}/status -d @api-params/newSession.json
 }
 
 function curlPostUpdateProgress() {
-    curl -X POST ${SERVER_URL}/status -d @updateProgress.json
+    curl -X POST ${SERVER_URL}/status -d @api-params/updateProgress.json
 }
 
 function curlLogin() {
