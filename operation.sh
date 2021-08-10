@@ -3,18 +3,27 @@ set -e
 
 timestamp=$(date +%s)
 
-# SERVER_URL=http://192.168.50.174:18605/
+# remote
 SERVER_URL=http://localhost:18605
+REDIS_URI=redis://9e15-a7de0e9792a8@ecs:7108/0
+MYSQL_CONN="mysqlsh -h ecs -u root -P 7107 --table --database svp "
+
+# local
+# SERVER_URL=http://192.168.50.174:18605/
+# MYSQL_CONN="mysql --login-path=root --database svp --table <"
+
+function resetDB() {
+    ${MYSQL_CONN} --sql -e "show tables;"
+    ${MYSQL_CONN} --sql -e "truncate table user;"
+    redis-cli -u ${REDIS_URI} flushdb
+}
 
 function rds() {
-    filename=mysql-query-"${timestamp}".log
-    mysql --login-path=root --database svp --table <mysql.sql >"${filename}"
+    ${MYSQL_CONN} -f  mysql.sql
 }
 
 function redis() {
-    set +x
-    redis-cli -h amd -p 12052 -a 9e15-a7de0e9792a8
-    set -x
+    redis-cli -u ${REDIS_URI} info
 }
 
 function curlPostNewSession() {
@@ -28,9 +37,16 @@ function curlPostUpdateProgress() {
 function curlLogin() {
     curl -X POST ${SERVER_URL}/login -d @api-params/login.json
 }
+
 function apiGetMasterAccount() {
-    queryString="action=masterAccount&account=wangkaixuan&token=122EE42F-FA57-4779-96D9-EA3821DFE4DE&progress=1"
-    curl -v -X GET ${SERVER_URL}/status?"${queryString}"
+    queryString="action=masterAccount&account=wangkaixuan&token=6613b5ce-6b86-4058-98af-43987cdddbeb&progress=1"
+    curl -X GET ${SERVER_URL}/status?"${queryString}"
 }
 
-$1
+function apiTest() {
+    curlPostNewSession
+    curlPostUpdateProgress
+    apiGetMasterAccount
+}
+
+$1 > "$1.log" 2>&1
