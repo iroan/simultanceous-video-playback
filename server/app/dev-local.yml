@@ -1,0 +1,3 @@
+port: 18605
+MySQLUri: jdbc:mysql://amd:12173/svp?user=wkx&password=AD159D4-3B31
+RedisUri: redis://9e15-a7de0e9792a8@amd:12052/0

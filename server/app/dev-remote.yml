@@ -1,0 +1,3 @@
+port: 18605
+MySQLUri: jdbc:mysql://ecs:7107/svp?user=wkx&password=AD159D4-3B31
+RedisUri: redis://9e15-a7de0e9792a8@ecs:7108/0
