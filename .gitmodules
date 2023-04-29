@@ -1,6 +1,0 @@
-[submodule "android"]
-	path = android
-	url = git@github.com:iroan/simultanceous-video-playback-android.git
-[submodule "simultanceous-video-playback-server"]
-	path = server
-	url = git@github.com:iroan/simultanceous-video-playback-server.git
